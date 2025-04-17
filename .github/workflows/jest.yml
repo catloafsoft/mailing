@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [18]
+        node-version: [18,20,22]
     services:
       # Label used to access the service container
       postgres:
@@ -37,7 +37,7 @@ jobs:
       MAILING_WEB_SESSION_PASSWORD: test-YEAed65EasPz7zbGF4fuoMTDka7C
       MAILING_SESSION_PASSWORD: test-5toTch6whgDvErN1nPg0hbDq6Do6
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
