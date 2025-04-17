@@ -1434,10 +1434,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@faire/mjml-react@^3.1.2":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@faire/mjml-react/-/mjml-react-3.1.2.tgz#68360585de138a18e370f30795597e68af3b244b"
-  integrity sha512-VNSZ1B/Qd4t2jtDxOHggdbJwBk4gISCa8xUdiguYNgzhWvg0ltMOVJih/7qVwbNfOB77X4jQamjTMMokCtKYfw==
+"@faire/mjml-react@^3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@faire/mjml-react/-/mjml-react-3.5.0.tgz#270da0aa9278ce25460a27f76f4658d9504b4d6d"
+  integrity sha512-PZBTjZwARVlNT/D4fr7nseULpAMlH6/v0MVoowTcDjLRNaSbXHBjI1JShxuDsJYLh2mBEM8PdZeVjIuaAZAoDw==
   dependencies:
     lodash.kebabcase "^4.1.1"
 
@@ -8411,10 +8411,10 @@ node-releases@^2.0.6:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
-nodemailer@6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.8.0.tgz#804bcc5256ee5523bc914506ee59f8de8f0b1cd5"
-  integrity sha512-EjYvSmHzekz6VNkNd12aUqAco+bOkRe3Of5jVhltqKhEsjw/y0PYPJfp83+s9Wzh1dspYAkUW/YNQ350NATbSQ==
+nodemailer@6.9.9:
+  version "6.9.9"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.9.tgz#4549bfbf710cc6addec5064dd0f19874d24248d9"
+  integrity sha512-dexTll8zqQoVJEZPwQAKzxxtFn0qTnjdQTchoU6Re9BUUGBJiOy3YMn/0ShTW6J5M0dfQ1NeDeRTTl4oIWgQMA==
 
 nopt@^5.0.0:
   version "5.0.0"
