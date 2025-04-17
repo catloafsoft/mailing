@@ -21,7 +21,7 @@
     "@next/mdx": "^13.1.5",
     "@prisma/client": "^4.2.0",
     "@vercel/analytics": "^0.1.5",
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "mailing-core": "^1.0.1",
     "next": "13.1.5",
     "react": "18.2.0",
