@@ -1,12 +1,12 @@
 <img src="https://user-images.githubusercontent.com/609038/206747937-74206c35-0587-4a2f-a744-126ea356756f.png#gh-dark-mode-only" alt="Mailing logo" width="295" height="64"/>
 <img src="https://user-images.githubusercontent.com/609038/206747927-112e3d23-e5e6-4f7c-950b-4490b7c4bbe8.png#gh-light-mode-only" alt="Mailing logo" width="295" height="64"/>
 
-<a href="https://www.npmjs.com/package/mailing"><img src="https://img.shields.io/npm/v/mailing.svg?sanitize=true" alt="Version"></a>
+![NPM Version](https://img.shields.io/npm/v/%40catloafsoft%2Fmailing)
 [![](https://dcbadge.vercel.app/api/server/fdSzmY46wY?style=flat)](https://discord.gg/fdSzmY46wY)
 
 **NOTE**: This is a fork of [sofn-xyz/mailing](https://github.com/sofn-xyz/mailing), which appears to now be abandonware, with some much-needed updates to the codebase. Most notably, it now supports React 19 and many packages have been updated to the latest versions to fix security vulnerabilities.
 
-## Build, test, send emails with React
+## ●&nbsp;&nbsp;Build, test, send emails with React
 
 - Build email templates with React components [Examples](https://www.mailing.run/docs/templates)
 - MJML components that work across clients (Outlook!)
@@ -16,7 +16,7 @@
 - Plays well with js frameworks like next.js, redwood.js, remix
 - Written in TypeScript, inspired by Action Mailer from Ruby on Rails
 
-## Why?
+## ●&nbsp;&nbsp;Why?
 
 We’re longtime users of Action Mailer and wanted something similar for our typescript/react apps. We didn’t find anything, so we decided to build Mailing. We added some features that we would’ve liked in Action Mailer, like a mobile toggle (with hotkeys), and the ability to send a test email from the browser while developing. We went all in on MJML so that we (almost) never have to think about email clients or nested tables :)
 
