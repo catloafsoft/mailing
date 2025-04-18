@@ -2,7 +2,6 @@
 <img src="https://user-images.githubusercontent.com/609038/206747927-112e3d23-e5e6-4f7c-950b-4490b7c4bbe8.png#gh-light-mode-only" alt="Mailing logo" width="295" height="64"/>
 
 <a href="https://www.npmjs.com/package/mailing"><img src="https://img.shields.io/npm/v/mailing.svg?sanitize=true" alt="Version"></a>
-[![Featured on Openbase](https://badges.openbase.com/js/featured/mailing.svg?token=A6xfdFmUU161m5Jns1Aqf4SwwIMSQBipWCm7HCdl1wc=)](https://openbase.com/js/mailing?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 [![](https://dcbadge.vercel.app/api/server/fdSzmY46wY?style=flat)](https://discord.gg/fdSzmY46wY)
 
 **NOTE**: This is a fork of [sofn-xyz/mailing](https://github.com/sofn-xyz/mailing), which appears to now be abandonware, with some much-needed updates to the codebase. Most notably, it now supports React 19 and many packages have been updated to the latest versions to fix security vulnerabilities.
