@@ -31,7 +31,7 @@ describe("writeDefaultConfigFile", () => {
     expect(defaults()).toEqual(TEST_DEFAULTS);
   });
 
-  it("writes mailing.config.json if it doesn't exist", () => {
+  it("writes mailing.config.json if it doesn't exist", async () => {
     const defaultJsonString = `{
   "typescript": true,
   "emailsDir": "./emails",
@@ -47,7 +47,7 @@ describe("writeDefaultConfigFile", () => {
       .spyOn(fsExtra, "existsSync")
       .mockImplementation(() => false);
 
-    writeDefaultConfigFile();
+    await writeDefaultConfigFile();
 
     expect(mockExistsSync).toHaveBeenCalled();
     expect(mockWriteFileSync).toHaveBeenCalledWith(
@@ -57,7 +57,7 @@ describe("writeDefaultConfigFile", () => {
     expect(log).toMatchSnapshot();
   });
 
-  it("does not write mailing.config.json if it exists", () => {
+  it("does not write mailing.config.json if it exists", async () => {
     // config file exists
     jest.spyOn(fsExtra, "existsSync").mockImplementation((_path) => true);
 
@@ -73,7 +73,7 @@ describe("writeDefaultConfigFile", () => {
       .spyOn(fsExtra, "writeFileSync")
       .mockImplementation(() => false);
 
-    writeDefaultConfigFile();
+    await writeDefaultConfigFile();
     expect(mockReadJSON).not.toHaveBeenCalled();
     expect(mockWriteFileSync).not.toHaveBeenCalled();
     expect(log).not.toHaveBeenCalled();
