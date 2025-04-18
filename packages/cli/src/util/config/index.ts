@@ -50,10 +50,10 @@ export function looksLikeTypescriptProject(): boolean {
 }
 
 // write the default mailing.config.json file to get you started
-export function writeDefaultConfigFile(): void {
+export async function writeDefaultConfigFile(): Promise<void> {
   if (existsSync(MAILING_CONFIG_FILE)) return;
 
-  const configJsonString = prettier.format(
+  const configJsonString = await prettier.format(
     JSON.stringify(defaultsForConfigFile()),
     {
       parser: "json",

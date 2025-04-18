@@ -18,7 +18,7 @@ export function buildHandler(handler: (argv: any) => Promise<void>) {
       quiet: argv.quiet,
     });
 
-    writeDefaultConfigFile();
+    await writeDefaultConfigFile();
 
     await handler(argv);
   };
