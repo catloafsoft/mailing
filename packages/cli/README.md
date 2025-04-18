@@ -5,7 +5,9 @@
 [![Featured on Openbase](https://badges.openbase.com/js/featured/mailing.svg?token=A6xfdFmUU161m5Jns1Aqf4SwwIMSQBipWCm7HCdl1wc=)](https://openbase.com/js/mailing?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 [![](https://dcbadge.vercel.app/api/server/fdSzmY46wY?style=flat)](https://discord.gg/fdSzmY46wY)
 
-<h2>●&nbsp;&nbsp;Build, test, send emails with React</h2>
+**NOTE**: This is a fork of [sofn-xyz/mailing](https://github.com/sofn-xyz/mailing), which appears to now be abandonware, with some much-needed updates to the codebase. Most notably, it now supports React 19 and many packages have been updated to the latest versions to fix security vulnerabilities.
+
+## Build, test, send emails with React
 
 - Build email templates with React components [Examples](https://www.mailing.run/docs/templates)
 - MJML components that work across clients (Outlook!)
@@ -15,9 +17,7 @@
 - Plays well with js frameworks like next.js, redwood.js, remix
 - Written in TypeScript, inspired by Action Mailer from Ruby on Rails
 
-<br/>
-
-## ●&nbsp;&nbsp;Why?
+## Why?
 
 We’re longtime users of Action Mailer and wanted something similar for our typescript/react apps. We didn’t find anything, so we decided to build Mailing. We added some features that we would’ve liked in Action Mailer, like a mobile toggle (with hotkeys), and the ability to send a test email from the browser while developing. We went all in on MJML so that we (almost) never have to think about email clients or nested tables :)
 

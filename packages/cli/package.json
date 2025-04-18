@@ -3,13 +3,13 @@
   "version": "1.2.1",
   "main": "dist/mailing.cjs.js",
   "license": "MIT",
-  "homepage": "https://github.com/sofn-xyz/mailing#readme",
+  "homepage": "https://github.com/catloafsoft/mailing#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sofn-xyz/mailing.git"
+    "url": "git+https://github.com/catloafsoft/mailing.git"
   },
   "bugs": {
-    "url": "https://github.com/sofn-xyz/mailing/issues"
+    "url": "https://github.com/catloafsoft/mailing/issues"
   },
   "bin": {
     "mailing": "./bin.js",
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@babel/parser": "^7.27.0",
+    "@catloafsoft/mailing-core": "^1.0.2",
     "@faire/mjml-react": "^3.5.0",
     "@prisma/client": "^6.6.0",
     "@reecelucas/react-use-hotkeys": "^1.3.5",
@@ -76,7 +77,6 @@
     "html-minifier-terser": "^7.2.0",
     "iron-session": "^6.3.1",
     "lodash": "^4.17.21",
-    "@catloafsoft/mailing-core": "^1.0.2",
     "mjml": "^4.15.3",
     "node-fetch": "^2.7.0",
     "node-html-parser": "^7.0.1",

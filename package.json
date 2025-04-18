@@ -1,7 +1,7 @@
 {
   "name": "mailing-monorepo",
-  "homepage": "https://github.com/sofn-xyz/mailing#readme",
-  "version": "0.1.0",
+  "homepage": "https://github.com/catloafsoft/mailing#readme",
+  "version": "1.2.1",
   "private": true,
   "type": "module",
   "license": "MIT",
