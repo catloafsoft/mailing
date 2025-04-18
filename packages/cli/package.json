@@ -1,6 +1,6 @@
 {
   "name": "@catloafsoft/mailing",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist/mailing.cjs.js",
   "license": "MIT",
   "homepage": "https://github.com/catloafsoft/mailing#readme",
