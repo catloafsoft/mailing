@@ -17,6 +17,6 @@
     "node-fetch": "^2.7.0",
     "node-html-parser": "^7.0.1",
     "open": "^8.4.2",
-    "posthog-node": "^4.11.7"
+    "posthog-node": "^4.12.0"
   }
 }
