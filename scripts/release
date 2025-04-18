@@ -21,24 +21,19 @@ if [[ -z "$MAILING_CORE_VERSION" ]]; then
     exit 1
 fi
 
-##
-# Search and replace in src directories -- these will be undone in the post-release script
+# Make sure you're publishing to the correct npm scope
+if ! npm whoami &> /dev/null; then
+    echo "You need to be logged in to npm. Run 'npm login' first."
+    exit 1
+fi
 
-# search cli src and replace "process.env.MAILING_VERSION" with "\"${process.env.MAILING_VERSION}\""
-find 'packages/cli/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_VERSION = process\.env\.MAILING_VERSION/MAILING_VERSION = \"$MAILING_VERSION\"/g" {} +
+# It's okay to proceed without verifying scope access
+# The user can create the scope when publishing if needed
+echo "Publishing to @catloafsoft scope - make sure you have access rights"
+echo "If you haven't created this scope yet, you'll be prompted during publishing"
 
-# search core src and replace "process.env.MAILING_CORE_VERSION" with "\"${process.env.MAILING_CORE_VERSION}\""
-find 'packages/core/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_CORE_VERSION = process\.env\.MAILING_CORE_VERSION/MAILING_CORE_VERSION = \"$MAILING_CORE_VERSION\"/g" {} +
-
-## build packages
+# Build packages
 yarn build
-yarn changeset publish
 
-##
-# Undo search and replace in src directories from above
-
-# search cli src and replace "process.env.MAILING_VERSION" with "\"${process.env.MAILING_VERSION}\""
-find 'packages/cli/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_VERSION = \"$MAILING_VERSION\"/MAILING_VERSION = process\.env\.MAILING_VERSION/g" {} +
-
-# search core src and replace "process.env.MAILING_CORE_VERSION" with "\"${process.env.MAILING_CORE_VERSION}\""
-find 'packages/core/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_CORE_VERSION = \"$MAILING_CORE_VERSION\"/MAILING_CORE_VERSION = process\.env\.MAILING_CORE_VERSION/g" {} +
+# Publish with public access since scoped packages are private by default
+yarn changeset publish --access public

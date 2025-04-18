@@ -1,5 +1,5 @@
 {
-  "name": "mailing",
+  "name": "@catloafsoft/mailing",
   "version": "1.2.1",
   "main": "dist/mailing.cjs.js",
   "license": "MIT",
@@ -76,7 +76,7 @@
     "html-minifier-terser": "^7.2.0",
     "iron-session": "^6.3.1",
     "lodash": "^4.17.21",
-    "mailing-core": "^1.0.2",
+    "@catloafsoft/mailing-core": "^1.0.2",
     "mjml": "^4.15.3",
     "node-fetch": "^2.7.0",
     "node-html-parser": "^7.0.1",

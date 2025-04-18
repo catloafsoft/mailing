@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "mailing-core";
+import { render } from "@catloafsoft/mailing-core";
 import { templates } from "../moduleManifest";
 import { getTemplateModule } from './moduleManifestUtil'
 

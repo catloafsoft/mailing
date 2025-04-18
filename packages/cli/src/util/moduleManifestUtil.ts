@@ -1,5 +1,5 @@
 import { JSXElementConstructor, ReactElement } from "react";
-import { Template } from "mailing-core";
+import { Template } from "@catloafsoft/mailing-core";
 import moduleManifest, { config } from "../moduleManifest";
 
 export function previewTree(): [string, string[]][] {

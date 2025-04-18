@@ -7,7 +7,7 @@ const getHrefPropsFromProps = (props) => {
       href: props.href,
       rel: props.rel,
       target: props.target,
-    })
+    }),
   );
 };
 const getStylePropsFromProps = (props) => {
@@ -23,7 +23,7 @@ const getStylePropsFromProps = (props) => {
       textDecoration: props.textDecoration,
       textTransform: props.textTransform,
       align: props.align,
-    })
+    }),
   );
 };
 export default function Link({ children, ...props }) {

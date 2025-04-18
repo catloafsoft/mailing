@@ -73,7 +73,8 @@
     "packages": [
       "packages/cli",
       "packages/core"
-    ]
+    ],
+    "distFilenameStrategy": "unscoped-package-name"
   },
   "packageManager": "yarn@4.9.1"
 }

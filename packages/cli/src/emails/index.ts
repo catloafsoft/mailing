@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { buildSendMail } from "mailing-core";
+import { buildSendMail } from "@catloafsoft/mailing-core";
 
 const transport = nodemailer.createTransport({
   pool: true,

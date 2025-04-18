@@ -9,7 +9,7 @@ import {
 } from "@faire/mjml-react";
 import Link from "./Link";
 import { colors, fontSize, fontWeight } from "../theme";
-import { EMAIL_PREFERENCES_URL } from "mailing-core";
+import { EMAIL_PREFERENCES_URL } from "@catloafsoft/mailing-core";
 
 type FooterProps = {
   includeUnsubscribe?: boolean;

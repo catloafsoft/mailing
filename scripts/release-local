@@ -29,8 +29,8 @@ yarn build
 
 ## create a local tarball of each package
 mkdir -p dist
-yarn workspace mailing pack --out ../../dist/mailing-cli-v$MAILING_VERSION.tgz
-yarn workspace mailing-core pack --out ../../dist/mailing-core-v$MAILING_CORE_VERSION.tgz
+yarn workspace @catloafsoft/mailing pack --out ../../dist/catloafsoft-mailing-v$MAILING_VERSION.tgz
+yarn workspace @catloafsoft/mailing-core pack --out ../../dist/catloafsoft-mailing-core-v$MAILING_CORE_VERSION.tgz
 
 echo "Created packages in dist/ directory:"
 ls -la dist/
