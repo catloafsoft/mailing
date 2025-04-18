@@ -37,5 +37,8 @@ class Analytics {
 
 export { Analytics };
 
-// default export a singleton
-export default new Analytics();
+// Create a singleton instance
+const analyticsInstance = new Analytics();
+
+// Export the singleton
+export default analyticsInstance;
