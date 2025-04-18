@@ -32,7 +32,8 @@
     "prepublish": "yarn build",
     "postinstall": "husky install && preconstruct dev",
     "watch": "preconstruct watch",
-    "release": "./scripts/release"
+    "release": "./scripts/release",
+    "release:local": "./scripts/release-local"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",

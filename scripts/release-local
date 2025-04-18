@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# load .env file
+if [[ -f .env ]]; then
+    source .env
+fi
+
+# set variables MAILING_VERSION and MAILING_CORE_VERSION to the value of the "version" attribute from each package.json
+MAILING_VERSION=$(awk -F'"' '/"version": ".+"/{ print $4; exit; }' packages/cli/package.json)
+MAILING_CORE_VERSION=$(awk -F'"' '/"version": ".+"/{ print $4; exit; }' packages/core/package.json)
+
+# throw an error if $MAILING_VERSION is empty
+if [[ -z "$MAILING_VERSION" ]]; then
+    echo "Failed to set MAILING_VERSION" 1>&2
+    exit 1
+fi
+
+# throw an error if $MAILING_CORE_VERSION is empty
+if [[ -z "$MAILING_CORE_VERSION" ]]; then
+    echo "Must provide MAILING_CORE_VERSION in environment" 1>&2
+    exit 1
+fi
+
+##
+# Search and replace in src directories
+
+# search cli src and replace "process.env.MAILING_VERSION" with "\"${process.env.MAILING_VERSION}\""
+find 'packages/cli/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_VERSION = process\.env\.MAILING_VERSION/MAILING_VERSION = \"$MAILING_VERSION\"/g" {} +
+
+# search core src and replace "process.env.MAILING_CORE_VERSION" with "\"${process.env.MAILING_CORE_VERSION}\""
+find 'packages/core/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_CORE_VERSION = process\.env\.MAILING_CORE_VERSION/MAILING_CORE_VERSION = \"$MAILING_CORE_VERSION\"/g" {} +
+
+## build packages only, without publishing
+yarn build
+
+## create a local tarball of each package
+mkdir -p dist
+yarn workspace mailing pack --out ../../dist/mailing-cli-v$MAILING_VERSION.tgz
+yarn workspace mailing-core pack --out ../../dist/mailing-core-v$MAILING_CORE_VERSION.tgz
+
+echo "Created packages in dist/ directory:"
+ls -la dist/
+
+##
+# Undo search and replace in src directories from above
+
+# search cli src and replace back
+find 'packages/cli/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_VERSION = \"$MAILING_VERSION\"/MAILING_VERSION = process\.env\.MAILING_VERSION/g" {} +
+
+# search core src and replace back
+find 'packages/core/src' -type f \( -name '*.ts' -o -name '*.tsx' \) -exec sed -i '' "s/MAILING_CORE_VERSION = \"$MAILING_CORE_VERSION\"/MAILING_CORE_VERSION = process\.env\.MAILING_CORE_VERSION/g" {} + 
