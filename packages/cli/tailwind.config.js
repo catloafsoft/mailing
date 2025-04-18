@@ -8,5 +8,5 @@ module.exports = {
     path.join(__dirname, "./src/components/**/*.{js,ts,jsx,tsx}"),
   ],
   theme,
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [],
 };
