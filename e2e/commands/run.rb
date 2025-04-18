@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../helpers/system_utils'
-require_relative './setup'
+require_relative 'setup'
 
 module Commands
   class Run
