@@ -5,6 +5,7 @@ import { render } from "./mjml";
 import { error, log } from "./util/serverLogger";
 import fetch from "node-fetch";
 import instrumentHtml from "./util/instrumentHtml";
+import type { ReactElement } from "react";
 
 class MalformedInputError extends Error {
   status: number;
@@ -30,7 +31,7 @@ export type BuildSendMailOptions<T> = {
 };
 
 export type ComponentMail = SendMailOptions & {
-  component?: JSX.Element;
+  component?: ReactElement;
   dangerouslyForceDeliver?: boolean;
   forcePreview?: boolean;
   previewServerUrl?: string;
