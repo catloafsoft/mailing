@@ -81,7 +81,7 @@
     "node-fetch": "^2.7.0",
     "node-html-parser": "^7.0.1",
     "nodemailer": "6.10.1",
-    "open": "^8.4.2",
+    "open": "^10.1.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prisma": "^6.6.0",
