@@ -1,7 +1,7 @@
 {
   "name": "mailing-monorepo",
   "homepage": "https://github.com/catloafsoft/mailing#readme",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "private": true,
   "type": "module",
   "license": "MIT",
