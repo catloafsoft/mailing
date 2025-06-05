@@ -1,7 +1,7 @@
 {
   "name": "mailing-monorepo",
   "homepage": "https://github.com/catloafsoft/mailing#readme",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -36,19 +36,21 @@
     "release:local": "./scripts/release-local"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/eslint-parser": "^7.27.0",
-    "@babel/preset-env": "^7.26.9",
-    "@babel/preset-react": "^7.26.3",
-    "@babel/preset-typescript": "^7.27.0",
-    "@changesets/cli": "^2.29.2",
+    "@babel/core": "^7.27.4",
+    "@babel/eslint-parser": "^7.27.5",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@changesets/cli": "^2.29.4",
     "@preconstruct/cli": "^2.8.12",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
     "@types/testing-library__jest-dom": "^5.14.9",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -58,14 +60,14 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^9.1.7",
     "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
+    "jest-environment-jsdom": "30.0.0-beta.3",
     "lint-staged": "^13.3.0",
     "next-router-mock": "^0.9.13",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "start-server-and-test": "^2.0.11",
-    "ts-jest": "29.3.2",
+    "start-server-and-test": "^2.0.12",
+    "ts-jest": "29.3.4",
     "ts-node": "^10.9.2",
     "yalc": "^1.0.0-pre.53"
   },
@@ -76,5 +78,8 @@
     ],
     "distFilenameStrategy": "unscoped-package-name"
   },
-  "packageManager": "yarn@4.9.1"
+  "packageManager": "yarn@4.9.2",
+  "dependencies": {
+    "typescript": "^5.8.3"
+  }
 }
