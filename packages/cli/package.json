@@ -65,7 +65,7 @@
     "@types/react": "^19.1.6",
     "@types/yargs": "^17.0.33",
     "autoprefixer": "^10.4.21",
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^6.0.0",
     "chalk": "^4.1.2",
     "chokidar": "^4.0.3",
     "classnames": "^2.5.1",
