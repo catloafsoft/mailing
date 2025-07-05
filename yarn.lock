@@ -1624,7 +1624,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@catloafsoft/mailing-core@npm:^1.0.2, @catloafsoft/mailing-core@npm:^1.2.2, @catloafsoft/mailing-core@workspace:packages/core":
+"@catloafsoft/mailing-core@npm:^1.0.2, @catloafsoft/mailing-core@npm:^1.2.2":
+  version: 1.2.4
+  resolution: "@catloafsoft/mailing-core@npm:1.2.4"
+  dependencies:
+    "@faire/mjml-react": "npm:^3.5.0"
+    chalk: "npm:^4.1.2"
+    fs-extra: "npm:^11.3.0"
+    mjml: "npm:^4.15.3"
+    node-fetch: "npm:^3.3.2"
+    node-html-parser: "npm:^7.0.1"
+    open: "npm:^10.1.2"
+    posthog-node: "npm:^4.18.0"
+    react: "npm:^19.1.0"
+    react-dom: "npm:^19.1.0"
+  checksum: 10c0/0b59dd12a770762cd004c3b0e7e4dda870dd3a8612478742ce741e62e21b073833048f4e65c40fe7f10c44150574dccd4138f2ad8ed988fd806d9c8250a9a243
+  languageName: node
+  linkType: hard
+
+"@catloafsoft/mailing-core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@catloafsoft/mailing-core@workspace:packages/core"
   dependencies:
