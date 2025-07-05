@@ -1,4 +1,4 @@
-import { existsSync } from "fs-extra";
+import { existsSync } from "fs";
 import { ArgumentsCamelCase } from "yargs";
 import { log } from "../util/serverLogger";
 import { generateEmailsDirectory } from "../util/generators";

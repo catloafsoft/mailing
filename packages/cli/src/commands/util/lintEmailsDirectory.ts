@@ -1,4 +1,3 @@
-import { flatten } from "lodash";
 import manifest from "../../moduleManifest";
 import { error, log } from "../../util/serverLogger";
 
@@ -35,7 +34,7 @@ export async function lintEmailsDirectory(emailsDir: string) {
 
   // run linters async
   const linters = [ensureMatchingNamedExports()];
-  const errors = flatten(await Promise.all(linters));
+  const errors = (await Promise.all(linters)).flat();
 
   // log errors after all linters run
   if (errors.length > 0) {

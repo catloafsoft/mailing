@@ -1,4 +1,4 @@
-import { existsSync } from "fs-extra";
+import { existsSync } from "fs";
 import "dotenv/config";
 import yargs from "yargs/yargs";
 import * as init from "./commands/init";

@@ -7,8 +7,5 @@ Error.stackTraceLimit = Infinity;
 
 process.env.MM_DEV = 1;
 
-require("esbuild-register/dist/node").register({
-  jsx: "automatic",
-  target: "node14",
-});
-require("./index.ts");
+// In ESM with tsx, we can directly import TypeScript files
+await import('./index.ts');

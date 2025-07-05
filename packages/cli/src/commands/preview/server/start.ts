@@ -1,8 +1,8 @@
 import http from "http";
 import { resolve } from "path";
+import { existsSync } from "fs";
 import open from "open";
 import next from "next";
-import { pathExists } from "fs-extra";
 import { parse } from "url";
 
 import { getPreviewsDirectory } from "../../../util/paths";
@@ -19,7 +19,7 @@ import { startChangeWatcher } from "./livereload";
 export default async function startPreviewServer() {
   const { emailsDir, port, quiet } = getConfig();
 
-  const emailsDirExists = await pathExists(emailsDir);
+  const emailsDirExists = existsSync(emailsDir);
 
   if (!emailsDirExists)
     throw new Error(`emailsDir does not exist in ${resolve(emailsDir)}`);

@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "isolatedModules": true,
     "jsx": "preserve" /* Specify what JSX code is generated. */,
-    "module": "commonjs" /* Specify what module code is generated. */,
+    "module": "ESNext" /* Specify what module code is generated. */,
     "rootDir": "." /* Specify the root folder within your source files. */,
-    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "moduleResolution": "bundler" /* Specify how TypeScript looks up a file from a given module specifier. */,
     "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
     "outDir": "." /* Specify an output folder for all emitted files. */,
+    "allowSyntheticDefaultImports": true /* Allow 'import x from y' when a module doesn't have a default export. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
     "strict": true /* Enable all strict type-checking options. */,
@@ -18,13 +19,19 @@
     "noEmit": true,
     "incremental": true,
     "resolveJsonModule": true,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "types": ["node"]
   },
   "$schema": "https://json.schemastore.org/tsconfig",
   "include": ["./*.ts", "src/**/*.ts", "src/**/*.tsx", "prisma/**/*.ts"],
   "exclude": [
     "dist/**/*",
     "node_modules",
-    "./cypress*.ts"
+    "./cypress*.ts",
+    "**/__test__/**/*",
+    "**/__integration__/**/*",
+    "**/__mocks__/**/*",
+    "**/*.test.ts",
+    "**/*.test.tsx"
   ]
 }

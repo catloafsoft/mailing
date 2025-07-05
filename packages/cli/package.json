@@ -1,7 +1,8 @@
 {
   "name": "@catloafsoft/mailing",
   "version": "1.2.4",
-  "main": "dist/mailing.cjs.js",
+  "type": "module",
+  "main": "./dist/mailing.js",
   "license": "MIT",
   "homepage": "https://github.com/catloafsoft/mailing#readme",
   "repository": {
@@ -11,9 +12,18 @@
   "bugs": {
     "url": "https://github.com/catloafsoft/mailing/issues"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "bin": {
     "mailing": "./bin.js",
     "mm": "./bin.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/mailing.js",
+      "types": "./dist/mailing.d.ts"
+    }
   },
   "files": [
     "!**/__test__/",
@@ -24,10 +34,10 @@
     "next-env.d.ts",
     "package.json",
     "src",
-    "next.config.js",
-    "tailwind.config.js",
+    "next.config.mjs",
+    "tailwind.config.mjs",
     "theme.js",
-    "postcss.config.js",
+    "postcss.config.mjs",
     "tsconfig.json",
     "prisma",
     "public",
@@ -35,44 +45,44 @@
   ],
   "description": "Fun email development environment",
   "devDependencies": {
-    "@next/eslint-plugin-next": "^12.3.7",
+    "@next/eslint-plugin-next": "^15.3.5",
     "@testing-library/react": "^16.3.0",
-    "cypress": "^14.4.1",
+    "@types/testing-library__jest-dom": "^6.0.0",
+    "cypress": "^14.5.1",
     "fetch-cookie": "^3.1.0",
     "node-mocks-http": "^1.17.2"
   },
   "peerDependencies": {
-    "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0",
-    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+    "next": "^14.2.29",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
-    "@babel/parser": "^7.27.5",
+    "@babel/parser": "^7.28.0",
     "@catloafsoft/mailing-core": "^1.0.2",
     "@faire/mjml-react": "^3.5.0",
-    "@prisma/client": "^6.9.0",
+    "@prisma/client": "^6.11.1",
     "@reecelucas/react-use-hotkeys": "^1.3.5",
     "@types/bcrypt": "^5.0.2",
     "@types/fs-extra": "^11.0.4",
     "@types/html-minifier-terser": "^7.0.2",
-    "@types/lodash": "^4.17.17",
+    "@types/lodash": "^4.17.20",
     "@types/mjml": "^4.7.4",
     "@types/node": "^22.15.29",
     "@types/node-fetch": "^2.6.12",
     "@types/nodemailer": "^6.4.17",
     "@types/prettier": "^3.0.0",
     "@types/prompts": "^2.4.9",
-    "@types/react": "^19.1.6",
+    "@types/react": "^19.1.8",
     "@types/yargs": "^17.0.33",
     "autoprefixer": "^10.4.21",
     "bcrypt": "^6.0.0",
     "chalk": "^4.1.2",
     "chokidar": "^4.0.3",
     "classnames": "^2.5.1",
-    "dotenv": "^16.5.0",
+    "dotenv": "^16.6.1",
     "email-validator": "^2.0.4",
     "esbuild": "^0.25.5",
-    "esbuild-register": "^3.6.0",
     "fs-extra": "^11.3.0",
     "html-minifier-terser": "^7.2.0",
     "iron-session": "^6.3.1",
@@ -80,25 +90,27 @@
     "mjml": "^4.15.3",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^7.0.1",
-    "nodemailer": "7.0.3",
+    "nodemailer": "7.0.4",
     "open": "^10.1.2",
-    "postcss": "^8.5.4",
-    "prettier": "^3.5.3",
-    "prisma": "^6.9.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "prisma": "^6.11.1",
     "prompts": "^2.4.2",
     "react-tiny-popover": "^8.1.6",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "tailwindcss": "^3.4.17",
     "tree-node-cli": "^1.6.0",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "uglify-js": "^3.19.3",
     "yargs": "^18.0.0"
   },
   "scripts": {
-    "dev": "rm -rf .mailing && yarn prisma migrate dev && src/dev.js",
-    "ci:server": "rm -rf .mailing && yarn prisma generate && yarn prisma migrate deploy && yarn next --version && NEXT_PUBLIC_MAILING_SKIP_AUTH=false NODE_ENV=test src/dev.js > test.log",
-    "ci:server:nohup": "rm -rf .mailing && NEXT_PUBLIC_MAILING_SKIP_AUTH=false NODE_ENV=test nohup src/dev.js --quiet > /dev/null 2>&1 &"
+    "build": "tsc --project . --outDir dist && echo 'export * from \"./index.js\";' > dist/mailing.js",
+    "dev": "rm -rf .mailing && yarn prisma migrate dev && tsx src/dev.js",
+    "ci:server": "rm -rf .mailing && yarn prisma generate && yarn prisma migrate deploy && yarn next --version && NEXT_PUBLIC_MAILING_SKIP_AUTH=false NODE_ENV=test tsx src/dev.js > test.log",
+    "ci:server:nohup": "rm -rf .mailing && NEXT_PUBLIC_MAILING_SKIP_AUTH=false NODE_ENV=test nohup tsx src/dev.js --quiet > /dev/null 2>&1 &"
   },
   "keywords": [
     "email",

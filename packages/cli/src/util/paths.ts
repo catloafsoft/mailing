@@ -1,4 +1,4 @@
-import { existsSync, readJSONSync } from "fs-extra";
+import { existsSync, readFileSync } from "fs";
 import { resolve } from "path";
 import { error } from "./serverLogger";
 
@@ -16,7 +16,7 @@ export function readPackageJSON() {
 
 export function readJSONverbose(filename: string) {
   try {
-    return readJSONSync(filename);
+    return JSON.parse(readFileSync(filename, 'utf-8'));
   } catch (err) {
     error(`expected ${filename} to exist and be valid JSON`);
     throw err;

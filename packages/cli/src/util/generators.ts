@@ -1,4 +1,6 @@
-import { copy } from "fs-extra";
+import fsExtra from "fs-extra";
+
+const { copy } = fsExtra;
 import { resolve } from "path";
 import tree from "tree-node-cli";
 import { log } from "./serverLogger";

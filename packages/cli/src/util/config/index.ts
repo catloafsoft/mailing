@@ -1,7 +1,6 @@
-import { existsSync, writeFileSync } from "fs-extra";
+import { existsSync, writeFileSync } from "fs";
 import { readPackageJSON } from "../paths";
 import { log, logPlain } from "../serverLogger";
-import { pick } from "lodash";
 import * as prettier from "prettier";
 
 export const MAILING_CONFIG_FILE = "./mailing.config.json";
@@ -31,13 +30,11 @@ export function defaults() {
   return DEFAULTS;
 }
 
-// options to include in the default config file
-const DEFAULT_KEYS_FOR_CONFIG_FILE = ["typescript", "emailsDir", "outDir"];
-
 // an object to JSON stringify and write to the default config file
 function defaultsForConfigFile() {
   const defaultsToWriteToConfig = defaults();
-  return pick(defaultsToWriteToConfig, DEFAULT_KEYS_FOR_CONFIG_FILE);
+  const { typescript, emailsDir, outDir } = defaultsToWriteToConfig;
+  return { typescript, emailsDir, outDir };
 }
 
 export function looksLikeTypescriptProject(): boolean {

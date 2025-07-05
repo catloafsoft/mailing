@@ -1,5 +1,4 @@
 import { Server } from "http";
-import { debounce } from "lodash";
 import { cwd } from "process";
 import { relative, resolve } from "path";
 import { watch } from "chokidar";
@@ -9,6 +8,35 @@ import { error, log, debug } from "../../../util/serverLogger";
 import { linkEmailsDirectory } from "./setup";
 
 export const WATCH_IGNORE = /^\.|node_modules/;
+
+// Simple debounce implementation
+function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  delay: number,
+  options?: { leading?: boolean }
+): (...args: Parameters<T>) => void {
+  let timeoutId: NodeJS.Timeout | undefined;
+  let lastArgs: Parameters<T>;
+  
+  return (...args: Parameters<T>) => {
+    lastArgs = args;
+    
+    if (options?.leading && !timeoutId) {
+      func(...args);
+    }
+    
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    
+    timeoutId = setTimeout(() => {
+      timeoutId = undefined;
+      if (!options?.leading) {
+        func(...lastArgs);
+      }
+    }, delay);
+  };
+}
 
 export function startChangeWatcher(server: Server, emailsDir: string) {
   try {
