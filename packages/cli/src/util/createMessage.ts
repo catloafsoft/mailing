@@ -27,9 +27,9 @@ const createMessage = async ({
 }: CreateMessageArgs) => {
   const message = await prisma.message.create({
     data: {
-      to: to,
-      bcc: bcc,
-      cc: cc,
+      to: Array.isArray(to) ? to : [to],
+      bcc: bcc ? (Array.isArray(bcc) ? bcc : [bcc]) : undefined,
+      cc: cc ? (Array.isArray(cc) ? cc : [cc]) : undefined,
       from: from,
       subject: subject,
       templateName: templateName,

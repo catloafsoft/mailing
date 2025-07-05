@@ -1,13 +1,31 @@
 {
   "name": "@catloafsoft/mailing-core",
   "version": "1.2.4",
-  "main": "dist/mailing-core.cjs.js",
+  "type": "module",
+  "main": "./dist/index.js",
   "license": "MIT",
   "description": "Fun email development environment (core library only)",
   "homepage": "https://github.com/catloafsoft/mailing#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/catloafsoft/mailing.git"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc --project . --outDir dist",
+    "dev": "tsc --project . --outDir dist --watch"
   },
   "dependencies": {
     "@faire/mjml-react": "^3.5.0",

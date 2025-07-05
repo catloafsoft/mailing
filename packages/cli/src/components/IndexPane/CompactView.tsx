@@ -44,12 +44,14 @@ const CompactView: React.FC<CompactViewProps> = ({
         } else if (route.level === collapseLevel) {
           collapseLevel = 999;
         }
+        const isExpanded = !route.collapsed;
+        const isSelected = i === cursor;
         return route.level > collapseLevel ? null : (
           <div
             key={route.path}
             role="treeitem"
-            aria-expanded={!route.collapsed}
-            aria-selected={i === cursor}
+            aria-expanded={isExpanded}
+            aria-selected={isSelected}
             className={cx("mb-1 cursor-pointer hover:underline", {
               "pl-2": route.level === 0,
               "pl-6": route.level === 1,

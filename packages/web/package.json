@@ -1,6 +1,7 @@
 {
   "name": "web",
   "version": "1.2.4",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "yarn prisma migrate dev && next dev",
@@ -35,7 +36,8 @@
   "devDependencies": {
     "@jest/globals": "30.0.4",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/node": "^22.15.29",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.16.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "autoprefixer": "^10.4.21",

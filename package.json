@@ -48,7 +48,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.16.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/testing-library__jest-dom": "^6.0.0",
@@ -73,10 +73,12 @@
     "typescript": "^5.8.3",
     "yalc": "^1.0.0-pre.53"
   },
+  "resolutions": {
+    "entities": "^4.5.0",
+    "htmlparser2": "^8.0.0"
+  },
   "preconstruct": {
-    "packages": [
-      "packages/core"
-    ],
+    "packages": [],
     "distFilenameStrategy": "unscoped-package-name"
   },
   "packageManager": "yarn@4.9.2"

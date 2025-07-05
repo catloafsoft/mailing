@@ -50,7 +50,8 @@
     "@types/testing-library__jest-dom": "^6.0.0",
     "cypress": "^14.5.1",
     "fetch-cookie": "^3.1.0",
-    "node-mocks-http": "^1.17.2"
+    "node-mocks-http": "^1.17.2",
+    "vite": "^7.0.2"
   },
   "peerDependencies": {
     "next": "^14.2.29",
@@ -68,7 +69,7 @@
     "@types/html-minifier-terser": "^7.0.2",
     "@types/lodash": "^4.17.20",
     "@types/mjml": "^4.7.4",
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.16.0",
     "@types/node-fetch": "^2.6.12",
     "@types/nodemailer": "^6.4.17",
     "@types/prettier": "^3.0.0",
@@ -107,7 +108,8 @@
     "yargs": "^18.0.0"
   },
   "scripts": {
-    "build": "tsc --project . --outDir dist && echo 'export * from \"./index.js\";' > dist/mailing.js",
+    "build": "vite build",
+    "build:tsc": "tsc --project . --outDir dist && echo 'export * from \"./index.js\";' > dist/mailing.js",
     "dev": "rm -rf .mailing && yarn prisma migrate dev && tsx src/dev.js",
     "ci:server": "rm -rf .mailing && yarn prisma generate && yarn prisma migrate deploy && yarn next --version && NEXT_PUBLIC_MAILING_SKIP_AUTH=false NODE_ENV=test tsx src/dev.js > test.log",
     "ci:server:nohup": "rm -rf .mailing && NEXT_PUBLIC_MAILING_SKIP_AUTH=false NODE_ENV=test nohup tsx src/dev.js --quiet > /dev/null 2>&1 &"

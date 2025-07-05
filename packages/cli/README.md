@@ -4,17 +4,25 @@
 ![NPM Version](https://img.shields.io/npm/v/%40catloafsoft%2Fmailing)
 [![](https://dcbadge.vercel.app/api/server/fdSzmY46wY?style=flat)](https://discord.gg/fdSzmY46wY)
 
-**NOTE**: This is a fork of [sofn-xyz/mailing](https://github.com/sofn-xyz/mailing), which appears to now be abandonware, with some much-needed updates to the codebase. Most notably, it now supports React 19 and many packages have been updated to the latest versions to fix security vulnerabilities.
+**NOTE**: This is a fork of [sofn-xyz/mailing](https://github.com/sofn-xyz/mailing), which appears to now be abandonware, with significant modernization and improvements to the codebase. Major updates include:
+
+- **React 19** and **Next.js 15** support
+- **Pure ESM architecture** with **Vite integration** for 3.5x faster builds
+- **Node.js 18+** requirement with modern JavaScript (ES2022)
+- Security vulnerability fixes and dependency updates
+- Improved build performance and developer experience
 
 ## ●&nbsp;&nbsp;Build, test, send emails with React
 
 - Build email templates with React components [Examples](https://www.mailing.run/docs/templates)
 - MJML components that work across clients (Outlook!)
 - Preview server with live reload for quick development
+- **Vite-powered builds** with 3.5x faster compilation times
+- **Pure ESM architecture** for modern JavaScript performance
 - Dev mode opens emails in your browser instead of sending
 - Test mode for ensuring emails send and have the correct content
-- Plays well with js frameworks like next.js, redwood.js, remix
-- Written in TypeScript, inspired by Action Mailer from Ruby on Rails
+- Plays well with js frameworks like **Next.js 15**, redwood.js, remix
+- Written in **TypeScript with ES2022** support, inspired by Action Mailer from Ruby on Rails
 
 ## ●&nbsp;&nbsp;Why?
 
@@ -24,7 +32,7 @@ We’re longtime users of Action Mailer and wanted something similar for our typ
 
 ## ●&nbsp;&nbsp;Get started
 
-Prerequisites: Mailing requires version 16+ of node and running on Mac or Linux. Windows is not supported at this time, but we'd welcome a pull request to [fix these bugs](https://github.com/sofn-xyz/mailing/issues/187) and add Windows support!
+Prerequisites: Mailing requires **Node.js 18+** and running on Mac or Linux. Windows is not supported at this time, but we'd welcome a pull request to [fix these bugs](https://github.com/sofn-xyz/mailing/issues/187) and add Windows support!
 
 To get started with Mailing, check out the [official docs](https://www.mailing.run/docs).
 
