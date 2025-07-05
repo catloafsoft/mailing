@@ -76,7 +76,14 @@
     {
       "files": ["packages/cli/pages/**/*", "packages/web/pages/**/*"],
       "rules": {
-        "@next/next/no-html-link-for-pages": "error",
+        "@next/next/no-html-link-for-pages": ["error", "packages/cli/pages"],
+        "@next/next/no-img-element": "error"
+      }
+    },
+    {
+      "files": ["packages/web/pages/**/*"],
+      "rules": {
+        "@next/next/no-html-link-for-pages": ["error", "packages/web/pages"],
         "@next/next/no-img-element": "error"
       }
     },
