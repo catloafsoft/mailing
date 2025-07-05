@@ -10,3 +10,5 @@ node_modules
 **/*.test.tsx
 **/*.test.js
 **/*.test.jsx
+**/vite.config.ts
+**/vite.config.js
