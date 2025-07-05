@@ -75,7 +75,6 @@
   },
   "preconstruct": {
     "packages": [
-      "packages/cli",
       "packages/core"
     ],
     "distFilenameStrategy": "unscoped-package-name"
