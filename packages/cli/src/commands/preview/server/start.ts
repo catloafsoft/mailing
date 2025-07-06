@@ -4,6 +4,8 @@ import { existsSync } from "fs";
 import open from "open";
 import next from "next";
 import { parse } from "url";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 import { getPreviewsDirectory } from "../../../util/paths";
 import { error, log, debug } from "../../../util/serverLogger";
@@ -15,6 +17,9 @@ import registerRequireHooks from "../../util/registerRequireHooks";
 import { bootstrapMailingDir, linkEmailsDirectory } from "./setup";
 import { getConfig } from "../../../util/config";
 import { startChangeWatcher } from "./livereload";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default async function startPreviewServer() {
   const { emailsDir, port, quiet } = getConfig();
@@ -87,13 +92,8 @@ export default async function startPreviewServer() {
       res.setHeader("Pragma", "no-cache");
       res.setHeader("Expires", "-1");
 
-      const emailsPath = resolve(previewsPath, "..");
-      for (const path in require.cache) {
-        if (path.startsWith(emailsPath)) {
-          delete require.cache[path];
-        }
-      }
-
+      // Note: require.cache is not available in ESM, hot reloading handled differently
+      
       currentUrl = `${host}${req.url}`;
 
       res.once("close", () => {

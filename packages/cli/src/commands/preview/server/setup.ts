@@ -3,6 +3,8 @@ import { tmpdir } from "os";
 import { execSync } from "child_process";
 import { readFileSync, appendFileSync } from "fs";
 import fsExtra from "fs-extra";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 import { debug, log } from "../../../util/serverLogger";
 import { build, BuildOptions } from "esbuild";
@@ -10,6 +12,9 @@ import { getNodeModulesDirsFrom } from "../../util/getNodeModulesDirsFrom";
 import { lintEmailsDirectory } from "../../util/lintEmailsDirectory";
 
 const { copy, mkdir, readdir, remove, rm, writeFile, readFile, move } = fsExtra;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Helper function to replace lodash camelCase
 function camelCase(str: string): string {
@@ -21,8 +26,16 @@ function camelCase(str: string): string {
 // Helper function to replace lodash template
 function template(str: string) {
   return (data: any) => {
-    return str.replace(/<%=\s*(\w+)\s*%>/g, (match, key) => {
-      return data[key] || match;
+    return str.replace(/<%=\s*(.+?)\s*%>/g, (match, expression) => {
+      try {
+        // Create a function that evaluates the expression in the context of the data
+        const func = new Function(...Object.keys(data), `return ${expression}`);
+        const result = func(...Object.values(data));
+        return result;
+      } catch (error) {
+        console.warn(`Template expression evaluation failed: ${expression}`, error);
+        return match; // Return original if evaluation fails
+      }
     });
   };
 }
@@ -259,7 +272,6 @@ async function buildManifest(
 
   // delete the original .ts file so there is no confusion loading the bundled .js files
   await remove(manifestPath);
-  delete require.cache[manifestPath];
   debug(`bundled ${buildType} manifest for ${manifestPath} to ${buildOutdir}`);
 }
 
