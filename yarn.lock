@@ -1624,7 +1624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@catloafsoft/mailing-core@workspace:*, @catloafsoft/mailing-core@workspace:packages/core":
+"@catloafsoft/mailing-core@npm:^2.0.0, @catloafsoft/mailing-core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@catloafsoft/mailing-core@workspace:packages/core"
   dependencies:
@@ -1651,7 +1651,7 @@ __metadata:
   resolution: "@catloafsoft/mailing@workspace:packages/cli"
   dependencies:
     "@babel/parser": "npm:^7.28.0"
-    "@catloafsoft/mailing-core": "workspace:*"
+    "@catloafsoft/mailing-core": "npm:^2.0.0"
     "@faire/mjml-react": "npm:^3.5.0"
     "@next/eslint-plugin-next": "npm:^15.3.5"
     "@prisma/client": "npm:^6.11.1"
@@ -17603,7 +17603,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:packages/web"
   dependencies:
-    "@catloafsoft/mailing-core": "workspace:*"
+    "@catloafsoft/mailing-core": "npm:^2.0.0"
     "@docsearch/react": "npm:^3.9.0"
     "@jest/globals": "npm:30.0.4"
     "@mdx-js/loader": "npm:^3.1.0"
