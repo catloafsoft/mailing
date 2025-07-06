@@ -1665,7 +1665,7 @@ __metadata:
     "@types/html-minifier-terser": "npm:^7.0.2"
     "@types/lodash": "npm:^4.17.20"
     "@types/mjml": "npm:^4.7.4"
-    "@types/node": "npm:^22.16.0"
+    "@types/node": "npm:^24.0.10"
     "@types/node-fetch": "npm:^2.6.12"
     "@types/nodemailer": "npm:^6.4.17"
     "@types/prettier": "npm:^3.0.0"
@@ -1679,13 +1679,13 @@ __metadata:
     chokidar: "npm:^4.0.3"
     classnames: "npm:^2.5.1"
     cypress: "npm:^14.5.1"
-    dotenv: "npm:^16.6.1"
+    dotenv: "npm:^17.0.1"
     email-validator: "npm:^2.0.4"
     esbuild: "npm:^0.25.5"
     fetch-cookie: "npm:^3.1.0"
     fs-extra: "npm:^11.3.0"
     html-minifier-terser: "npm:^7.2.0"
-    iron-session: "npm:^6.3.1"
+    iron-session: "npm:^8.0.4"
     lodash: "npm:^4.17.21"
     mjml: "npm:^4.15.3"
     node-fetch: "npm:^3.3.2"
@@ -3258,16 +3258,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/font@npm:^13.5.11":
-  version: 13.5.11
-  resolution: "@next/font@npm:13.5.11"
-  checksum: 10c0/45b03a617a62ed863cdfac5140722466b74400ad96ec0651698e6115db478d650facacf25b3abbf83582e5cd6f18db9442dc5ed2a3a30858403f3cde67a2722d
+"@next/font@npm:^14.2.15":
+  version: 14.2.15
+  resolution: "@next/font@npm:14.2.15"
+  peerDependencies:
+    next: "*"
+  checksum: 10c0/771061e60465c8b61dc3a959b2086faa88b1e0e975f6442341e8f54b6083458d2130148a9430bffa10886dd5d74b18f91254d7e47b677204f742798b85fbbed1
   languageName: node
   linkType: hard
 
-"@next/mdx@npm:^13.5.11":
-  version: 13.5.11
-  resolution: "@next/mdx@npm:13.5.11"
+"@next/mdx@npm:^15.3.5":
+  version: 15.3.5
+  resolution: "@next/mdx@npm:15.3.5"
   dependencies:
     source-map: "npm:^0.7.0"
   peerDependencies:
@@ -3278,7 +3280,7 @@ __metadata:
       optional: true
     "@mdx-js/react":
       optional: true
-  checksum: 10c0/31d6b9f57be8bfdc2a44db16bd27276375e46cbebdfc50de724fdaa77b846c3f50beb1958a27872891f9bfcf4e7bf84b3b5f863e4e62e89b89072438b1feb3b1
+  checksum: 10c0/d9b308a25c153ce06005fbb36d9a13ad1a2f103d638c51ebede48731b06952feff989ab30875bbc9df6b31fdf7eb3569d1762563cd65f8f559704a8547531e3e
   languageName: node
   linkType: hard
 
@@ -4433,16 +4435,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.14":
-  version: 29.5.14
-  resolution: "@types/jest@npm:29.5.14"
-  dependencies:
-    expect: "npm:^29.0.0"
-    pretty-format: "npm:^29.0.0"
-  checksum: 10c0/18e0712d818890db8a8dab3d91e9ea9f7f19e3f83c2e50b312f557017dc81466207a71f3ed79cf4428e813ba939954fa26ffa0a9a7f153181ba174581b1c2aed
-  languageName: node
-  linkType: hard
-
 "@types/jest@npm:^30.0.0":
   version: 30.0.0
   resolution: "@types/jest@npm:30.0.0"
@@ -4582,7 +4574,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=10.0.0":
+"@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:^24.0.10":
   version: 24.0.10
   resolution: "@types/node@npm:24.0.10"
   dependencies:
@@ -4602,15 +4594,6 @@ __metadata:
   version: 17.0.45
   resolution: "@types/node@npm:17.0.45"
   checksum: 10c0/0db377133d709b33a47892581a21a41cd7958f22723a3cc6c71d55ac018121382de42fbfc7970d5ae3e7819dbe5f40e1c6a5174aedf7e7964e9cb8fa72b580b0
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^22.16.0":
-  version: 22.16.0
-  resolution: "@types/node@npm:22.16.0"
-  dependencies:
-    undici-types: "npm:~6.21.0"
-  checksum: 10c0/6219b521062f6c38d4d85ebd25807bd7f2bc703a5acba24e2c6716938d9d6cefd6fafd7b5156f61580eb58a0d82e8921751b778655675389631d813e5f261c03
   languageName: node
   linkType: hard
 
@@ -6887,7 +6870,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:~0.7.2":
+"cookie@npm:^0.7.2, cookie@npm:~0.7.2":
   version: 0.7.2
   resolution: "cookie@npm:0.7.2"
   checksum: 10c0/9596e8ccdbf1a3a88ae02cf5ee80c1c50959423e1022e4e60b91dd87c622af1da309253d8abdb258fb5e3eacb4f08e579dc58b4897b8087574eee0fd35dfa5d2
@@ -7478,10 +7461,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.0.1, dotenv@npm:^16.6.1":
+"dotenv@npm:^16.0.1":
   version: 16.6.1
   resolution: "dotenv@npm:16.6.1"
   checksum: 10c0/15ce56608326ea0d1d9414a5c8ee6dcf0fffc79d2c16422b4ac2268e7e2d76ff5a572d37ffe747c377de12005f14b3cc22361e79fc7f1061cce81f77d2c973dc
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^17.0.1":
+  version: 17.0.1
+  resolution: "dotenv@npm:17.0.1"
+  checksum: 10c0/79d3381832ffc6ada0cab8158120c6190e8f8680c1ff985e9d4d1345229219923b23b800969ff47412a71f965da582c7a86a5ea0d257f9106f8f3522ceb5befa
   languageName: node
   linkType: hard
 
@@ -8716,7 +8706,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^29.0.0, expect@npm:^29.7.0":
+"expect@npm:^29.7.0":
   version: 29.7.0
   resolution: "expect@npm:29.7.0"
   dependencies:
@@ -9953,7 +9943,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iron-session@npm:^6.2.1, iron-session@npm:^6.3.1":
+"iron-session@npm:^6.2.1":
   version: 6.3.1
   resolution: "iron-session@npm:6.3.1"
   dependencies:
@@ -9979,12 +9969,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"iron-session@npm:^8.0.4":
+  version: 8.0.4
+  resolution: "iron-session@npm:8.0.4"
+  dependencies:
+    cookie: "npm:^0.7.2"
+    iron-webcrypto: "npm:^1.2.1"
+    uncrypto: "npm:^0.1.3"
+  checksum: 10c0/774ed93d964cec435455609120df18c8c8b21f29baeb5969dfb4677e5185eed289d2c31707bd5949dd16d5e10a9f06b7a0d1bc6ff57e8dbf50a50c0deef1b4ea
+  languageName: node
+  linkType: hard
+
 "iron-webcrypto@npm:^0.2.5":
   version: 0.2.8
   resolution: "iron-webcrypto@npm:0.2.8"
   dependencies:
     buffer: "npm:^6"
   checksum: 10c0/353ad3cc2f52e8ef22a8388408c87eed7b7e401608f04859eb1b5dcbb0ae7fb681333fd9e607172564ac056a760c61c2e9a276053ee7e8813aef4f7e15fbe610
+  languageName: node
+  linkType: hard
+
+"iron-webcrypto@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "iron-webcrypto@npm:1.2.1"
+  checksum: 10c0/5cf27c6e2bd3ef3b4970e486235fd82491ab8229e2ed0ac23307c28d6c80d721772a86ed4e9fe2a5cabadd710c2f024b706843b40561fb83f15afee58f809f66
   languageName: node
   linkType: hard
 
@@ -11920,8 +11928,8 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.3.0"
     "@testing-library/user-event": "npm:^14.6.1"
-    "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.16.0"
+    "@types/jest": "npm:^30.0.0"
+    "@types/node": "npm:^24.0.10"
     "@types/react": "npm:^19.1.8"
     "@types/react-dom": "npm:^19.1.6"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
@@ -14651,7 +14659,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^29.0.0, pretty-format@npm:^29.7.0":
+"pretty-format@npm:^29.7.0":
   version: 29.7.0
   resolution: "pretty-format@npm:29.7.0"
   dependencies:
@@ -17096,10 +17104,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.21.0":
-  version: 6.21.0
-  resolution: "undici-types@npm:6.21.0"
-  checksum: 10c0/c01ed51829b10aa72fc3ce64b747f8e74ae9b60eafa19a7b46ef624403508a54c526ffab06a14a26b3120d055e1104d7abe7c9017e83ced038ea5cf52f8d5e04
+"uncrypto@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "uncrypto@npm:0.1.3"
+  checksum: 10c0/74a29afefd76d5b77bedc983559ceb33f5bbc8dada84ff33755d1e3355da55a4e03a10e7ce717918c436b4dfafde1782e799ebaf2aadd775612b49f7b5b2998e
   languageName: node
   linkType: hard
 
@@ -17611,12 +17619,12 @@ __metadata:
     "@jest/globals": "npm:30.0.4"
     "@mdx-js/loader": "npm:^3.1.0"
     "@mdx-js/react": "npm:3.1.0"
-    "@next/font": "npm:^13.5.11"
-    "@next/mdx": "npm:^13.5.11"
+    "@next/font": "npm:^14.2.15"
+    "@next/mdx": "npm:^15.3.5"
     "@prisma/client": "npm:^6.11.1"
     "@tailwindcss/typography": "npm:^0.5.16"
     "@types/jest": "npm:^30.0.0"
-    "@types/node": "npm:^22.16.0"
+    "@types/node": "npm:^24.0.10"
     "@types/react": "npm:^19.1.8"
     "@types/react-dom": "npm:^19.1.6"
     "@vercel/analytics": "npm:^1.5.0"
