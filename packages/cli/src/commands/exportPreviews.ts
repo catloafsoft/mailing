@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { resolve } from "path";
-import { outputFile, readdirSync } from "fs-extra";
+import { pathToFileURL } from "url";
+import { readdirSync } from "fs";
+import fsExtra from "fs-extra";
 import { ArgumentsCamelCase } from "yargs";
 import { getPreviewsDirectory } from "../util/paths";
 import { error, log } from "../util/serverLogger";
@@ -9,6 +11,8 @@ import registerRequireHooks from "./util/registerRequireHooks";
 import { defaults } from "../util/config";
 import { buildHandler } from "../util/buildHandler";
 import { minify } from "html-minifier-terser";
+
+const { outputFile } = fsExtra;
 
 export type ExportPreviewsArgs = ArgumentsCamelCase<{
   emailsDir?: string;
@@ -93,44 +97,45 @@ export const handler = buildHandler(async (argv: ExportPreviewsArgs) => {
   const toWrite: Array<() => Promise<void>> = [];
   const filenames: string[] = [];
 
-  const previewRenders = readdirSync(previewsPath)
-    .filter((path) => !/^\./.test(path))
-    .flatMap((p) => {
-      const previewPath = resolve(previewsPath, p);
-      const previewModule = require(previewPath);
+  const previewFiles = readdirSync(previewsPath).filter((path) => !/^\./.test(path));
+  
+  for (const p of previewFiles) {
+    const previewPath = resolve(previewsPath, p);
+    
+    // Convert to dynamic import for ESM compatibility
+    const previewModule = await import(pathToFileURL(previewPath).href);
+    
+    const previewFunctions = Object.keys(previewModule).filter(key => key !== 'default' && typeof previewModule[key] === 'function');
+    
+    for (const previewFunction of previewFunctions) {
+      const filename = previewFilename(p, previewFunction);
+      count++;
 
-      return Object.keys(require(previewPath)).flatMap(
-        async (previewFunction) => {
-          const filename = previewFilename(p, previewFunction);
-          count++;
-
-          const { html, errors, htmlLint } = render(
-            await previewModule[previewFunction]()
-          );
-          if (errors.length) {
-            error(`MJML errors rendering ${filename}:`, errors);
-          }
-
-          if (htmlLint.length && !argv.skipLint) {
-            lint[filename] = htmlLint;
-          }
-
-          const minifyConfig = {
-            collapseWhitespace: true,
-            minifyCSS: false,
-            caseSensitive: true,
-            removeEmptyAttributes: true,
-          };
-
-          const outHtml = argv.minify ? await minify(html, minifyConfig) : html;
-          filenames.push(filename);
-          toWrite.push(async () =>
-            outputFile(resolve(outDir, filename), outHtml)
-          );
-        }
+      const { html, errors, htmlLint } = render(
+        await previewModule[previewFunction]()
       );
-    });
-  await Promise.all(previewRenders);
+      if (errors.length) {
+        error(`MJML errors rendering ${filename}:`, errors);
+      }
+
+      if (htmlLint.length && !argv.skipLint) {
+        lint[filename] = htmlLint;
+      }
+
+      const minifyConfig = {
+        collapseWhitespace: true,
+        minifyCSS: false,
+        caseSensitive: true,
+        removeEmptyAttributes: true,
+      };
+
+      const outHtml = argv.minify ? await minify(html, minifyConfig) : html;
+      filenames.push(filename);
+      toWrite.push(async () =>
+        outputFile(resolve(outDir, filename), outHtml)
+      );
+    }
+  }
 
   const lintCount = Object.keys(lint).length;
   if (lintCount) {

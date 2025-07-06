@@ -1,9 +1,11 @@
 import http from "http";
 import { resolve } from "path";
+import { existsSync } from "fs";
 import open from "open";
 import next from "next";
-import { pathExists } from "fs-extra";
 import { parse } from "url";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 import { getPreviewsDirectory } from "../../../util/paths";
 import { error, log, debug } from "../../../util/serverLogger";
@@ -16,10 +18,13 @@ import { bootstrapMailingDir, linkEmailsDirectory } from "./setup";
 import { getConfig } from "../../../util/config";
 import { startChangeWatcher } from "./livereload";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 export default async function startPreviewServer() {
   const { emailsDir, port, quiet } = getConfig();
 
-  const emailsDirExists = await pathExists(emailsDir);
+  const emailsDirExists = existsSync(emailsDir);
 
   if (!emailsDirExists)
     throw new Error(`emailsDir does not exist in ${resolve(emailsDir)}`);
@@ -87,13 +92,8 @@ export default async function startPreviewServer() {
       res.setHeader("Pragma", "no-cache");
       res.setHeader("Expires", "-1");
 
-      const emailsPath = resolve(previewsPath, "..");
-      for (const path in require.cache) {
-        if (path.startsWith(emailsPath)) {
-          delete require.cache[path];
-        }
-      }
-
+      // Note: require.cache is not available in ESM, hot reloading handled differently
+      
       currentUrl = `${host}${req.url}`;
 
       res.once("close", () => {

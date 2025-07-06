@@ -1,10 +1,10 @@
 import type { SendMailOptions, Transporter } from "nodemailer";
 import open from "open";
 import fs from "fs-extra";
-import { render } from "./mjml";
-import { error, log } from "./util/serverLogger";
+import { render } from "./mjml.js";
+import { error, log } from "./util/serverLogger.js";
 import fetch from "node-fetch";
-import instrumentHtml from "./util/instrumentHtml";
+import instrumentHtml from "./util/instrumentHtml.js";
 import type { ReactElement } from "react";
 
 class MalformedInputError extends Error {
@@ -120,7 +120,7 @@ export function buildSendMail<T>(options: BuildSendMailOptions<T>) {
           )}`
         );
       }
-      derivedTemplateName = component.type.name;
+      derivedTemplateName = typeof component.type === 'function' ? component.type.name : undefined;
       mailOptions.html = renderedHtml;
     }
 
@@ -128,11 +128,12 @@ export function buildSendMail<T>(options: BuildSendMailOptions<T>) {
       throw new MalformedInputError("sendMail couldn't find your html");
 
     // Get subject from the component if not provided
-    if (component && !mailOptions.subject) {
-      if (typeof component.type.subject === "string") {
-        mailOptions.subject = component.type.subject;
-      } else if (typeof component.type.subject === "function") {
-        mailOptions.subject = component.type.subject(component.props);
+    if (component && !mailOptions.subject && typeof component.type === 'function') {
+      const componentType = component.type as Template<any>;
+      if (typeof componentType.subject === "string") {
+        mailOptions.subject = componentType.subject;
+      } else if (typeof componentType.subject === "function") {
+        mailOptions.subject = componentType.subject(component.props as any);
       }
     }
 
@@ -185,7 +186,8 @@ export function buildSendMail<T>(options: BuildSendMailOptions<T>) {
       });
 
       if (hookResponse.status === 200) {
-        const { message, memberId, error } = await hookResponse.json();
+        const responseData = await hookResponse.json() as { message?: { id: string }, memberId?: string, error?: string };
+        const { message, memberId, error } = responseData;
 
         // Don't send to members that are not subscribed to the list
         if (error) {
@@ -193,9 +195,9 @@ export function buildSendMail<T>(options: BuildSendMailOptions<T>) {
           return;
         }
 
-        const messageId = message.id;
+        const messageId = message?.id;
 
-        if (stringHtml && memberId) {
+        if (stringHtml && memberId && messageId) {
           const emailPrefsUrl = new URL(
             `unsubscribe/${memberId}`,
             MAILING_API_URL

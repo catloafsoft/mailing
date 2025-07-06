@@ -1,5 +1,5 @@
 import { JSXElementConstructor, ReactElement } from "react";
-import { renderToMjml } from "@faire/mjml-react/utils/renderToMjml";
+import { renderToMjml } from "@faire/mjml-react/utils/renderToMjml.js";
 import mjml2html from "mjml";
 import { parse } from "node-html-parser";
 

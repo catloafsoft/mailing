@@ -8,7 +8,7 @@ type CodeBlocksProps = {
 export default function CodeBlocks({ children }: CodeBlocksProps) {
   const languages: string[] = Children.map(
     children,
-    (child) => child.props?.language
+    (child) => (child as ReactElement<any>).props?.language
   );
   const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
 
@@ -35,7 +35,7 @@ export default function CodeBlocks({ children }: CodeBlocksProps) {
       </div>
       {Children.map(
         children,
-        (child) => child.props?.language === currentLanguage && child
+        (child) => (child as ReactElement<any>).props?.language === currentLanguage && child
       )}
     </div>
   );

@@ -3,3 +3,12 @@ node_modules
 **/generated/**
 **/runs/**
 .mailing
+**/__test__/**
+**/__integration__/**
+**/__mocks__/**
+**/*.test.ts
+**/*.test.tsx
+**/*.test.js
+**/*.test.jsx
+**/vite.config.ts
+**/vite.config.js

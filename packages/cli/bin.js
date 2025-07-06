@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require("./dist/mailing.cjs.js");
+import "./dist/mailing.js";

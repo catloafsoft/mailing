@@ -29,7 +29,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, trigger }) => {
         onClickOutside={() => setShow(false)}
         isOpen={show}
         positions={["bottom", "left"]}
-        content={({ position, childRect, popoverRect }) => (
+        content={({ position, childRect, popoverRect }: any) => (
           <ArrowContainer // if you'd like an arrow, you can import the ArrowContainer!
             position={position}
             childRect={childRect}

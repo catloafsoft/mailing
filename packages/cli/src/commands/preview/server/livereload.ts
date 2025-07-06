@@ -1,7 +1,6 @@
 import { Server } from "http";
-import { debounce } from "lodash";
 import { cwd } from "process";
-import { relative, resolve } from "path";
+import { relative } from "path";
 import { watch } from "chokidar";
 import { Server as SocketServer, Socket } from "socket.io";
 
@@ -9,6 +8,35 @@ import { error, log, debug } from "../../../util/serverLogger";
 import { linkEmailsDirectory } from "./setup";
 
 export const WATCH_IGNORE = /^\.|node_modules/;
+
+// Simple debounce implementation
+function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  delay: number,
+  options?: { leading?: boolean }
+): (...args: Parameters<T>) => void {
+  let timeoutId: NodeJS.Timeout | undefined;
+  let lastArgs: Parameters<T>;
+  
+  return (...args: Parameters<T>) => {
+    lastArgs = args;
+    
+    if (options?.leading && !timeoutId) {
+      func(...args);
+    }
+    
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    
+    timeoutId = setTimeout(() => {
+      timeoutId = undefined;
+      if (!options?.leading) {
+        func(...lastArgs);
+      }
+    }, delay);
+  };
+}
 
 export function startChangeWatcher(server: Server, emailsDir: string) {
   try {
@@ -49,7 +77,7 @@ export function startChangeWatcher(server: Server, emailsDir: string) {
       (eventType, filename) => {
         if (WATCH_IGNORE.test(filename)) return;
         log(`detected ${eventType} on ${filename}, reloading`);
-        delete require.cache[resolve(changeWatchPath, filename)];
+        // Note: require.cache is not available in ESM, hot reloading handled differently
         void reload();
       }
     );

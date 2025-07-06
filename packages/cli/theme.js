@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   variants: {
     fill: ["hover", "focus"], // this line does the trick
   },

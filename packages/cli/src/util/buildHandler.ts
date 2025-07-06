@@ -1,5 +1,5 @@
 import { log } from "./serverLogger";
-import { existsSync } from "fs-extra";
+import { existsSync } from "fs";
 import { setConfig, writeDefaultConfigFile } from "./config";
 
 export function buildHandler(handler: (argv: any) => Promise<void>) {

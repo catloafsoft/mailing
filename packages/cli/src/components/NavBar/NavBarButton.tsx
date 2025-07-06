@@ -1,6 +1,6 @@
 import cx from "classnames";
 import Link from "next/link";
-import { colors } from "../../util/tailwind";
+import { colors } from "../../util/colors";
 
 type NavBarButtonProps = {
   active: boolean;

@@ -1,24 +1,57 @@
 import { resolve, posix, join } from "path";
 import { tmpdir } from "os";
 import { execSync } from "child_process";
-import {
-  copy,
-  mkdir,
-  readdir,
-  remove,
-  rm,
-  writeFile,
-  readFile,
-  appendFile,
-  readJSONSync,
-  move,
-} from "fs-extra";
+import { readFileSync, appendFileSync } from "fs";
+import fsExtra from "fs-extra";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 import { debug, log } from "../../../util/serverLogger";
 import { build, BuildOptions } from "esbuild";
-import { camelCase, template } from "lodash";
 import { getNodeModulesDirsFrom } from "../../util/getNodeModulesDirsFrom";
 import { lintEmailsDirectory } from "../../util/lintEmailsDirectory";
+
+const { copy, mkdir, readdir, remove, rm, writeFile, readFile, move } = fsExtra;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Helper function to replace lodash camelCase
+function camelCase(str: string): string {
+  return str
+    .replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''))
+    .replace(/^(.)/, (_, c) => c.toLowerCase());
+}
+
+// Helper function to replace lodash template
+function template(str: string) {
+  return (data: any) => {
+    return str.replace(/<%=\s*(.+?)\s*%>/g, (match, expression) => {
+      try {
+        // Create a function that evaluates the expression in the context of the data
+        const func = new Function(...Object.keys(data), `return ${expression}`);
+        const result = func(...Object.values(data));
+        return result;
+      } catch (error) {
+        console.warn(`Template expression evaluation failed: ${expression}`, error);
+        return match; // Return original if evaluation fails
+      }
+    });
+  };
+}
+
+// Helper function to read JSON files
+function readJSONSync(filename: string) {
+  return JSON.parse(readFileSync(filename, 'utf-8'));
+}
+
+// Helper function for appendFile
+async function appendFile(filename: string, data: string) {
+  return new Promise<void>((resolve, _reject) => {
+    appendFileSync(filename, data);
+    resolve();
+  });
+}
 
 export const COMPONENT_FILE_REGEXP = /^[^\s]+\.[tj]sx$/; // no spaces, .jsx or .tsx
 export const DOT_MAILING_IGNORE_REGEXP =
@@ -169,7 +202,6 @@ export async function bootstrapMailingDir() {
     const tmpDir = join(tmpdir(), `mailing${Date.now()}`);
 
     await copy(nodeMailingPath, tmpDir, {
-      recursive: true,
       dereference: true,
       overwrite: true,
       filter: (path) => !DOT_MAILING_IGNORE_REGEXP.test(path),
@@ -179,7 +211,6 @@ export async function bootstrapMailingDir() {
   } else {
     await mkdir(mailingPath, { recursive: true });
     await copy(nodeMailingPath, mailingPath, {
-      recursive: true,
       dereference: true,
       overwrite: true,
       filter: (path) => !DOT_MAILING_IGNORE_REGEXP.test(path),
@@ -241,7 +272,6 @@ async function buildManifest(
 
   // delete the original .ts file so there is no confusion loading the bundled .js files
   await remove(manifestPath);
-  delete require.cache[manifestPath];
   debug(`bundled ${buildType} manifest for ${manifestPath} to ${buildOutdir}`);
 }
 

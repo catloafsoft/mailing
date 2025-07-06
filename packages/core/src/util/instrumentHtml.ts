@@ -1,5 +1,5 @@
 import { parse } from "node-html-parser";
-import { error } from "./serverLogger";
+import { error } from "./serverLogger.js";
 
 export default function instrumentHtml({
   html,
