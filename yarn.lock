@@ -2264,7 +2264,7 @@ __metadata:
     "@faire/mjml-react": "npm:^3.5.2"
     "@types/react": "npm:^19.1.10"
     "@types/react-dom": "npm:^19.1.7"
-    chalk: "npm:^4.1.2"
+    chalk: "npm:^5.6.0"
     fs-extra: "npm:^11.3.1"
     mjml: "npm:^4.15.3"
     node-fetch: "npm:^3.3.2"
@@ -2308,7 +2308,7 @@ __metadata:
     "@types/yargs": "npm:^17.0.33"
     autoprefixer: "npm:^10.4.21"
     bcrypt: "npm:^6.0.0"
-    chalk: "npm:^4.1.2"
+    chalk: "npm:^5.6.0"
     chokidar: "npm:^4.0.3"
     classnames: "npm:^2.5.1"
     cypress: "npm:^14.5.4"
@@ -7867,6 +7867,13 @@ __metadata:
     ansi-styles: "npm:^4.1.0"
     supports-color: "npm:^7.1.0"
   checksum: 10c0/4a3fef5cc34975c898ffe77141450f679721df9dde00f6c304353fa9c8b571929123b26a0e4617bde5018977eb655b31970c297b91b63ee83bb82aeb04666880
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^5.6.0":
+  version: 5.6.0
+  resolution: "chalk@npm:5.6.0"
+  checksum: 10c0/f8558fc12fd9805f167611803b325b0098bbccdc9f1d3bafead41c9bac61f263357f3c0df0cbe28bc2fd5fca3edcf618b01d6771a5a776b4c15d061482a72b23
   languageName: node
   linkType: hard
 
