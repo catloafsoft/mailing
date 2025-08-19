@@ -1,0 +1,9 @@
+---
+globs: *.js,*.mjs,*.ts,*.tsx
+---
+# ESM and Node runtime conventions
+
+- **ESM-only**: Use `import`/`export`. Do not use `require`, `module.exports`, or `__dirname`.
+- **Node 18+**: Target Node 18 or newer. Prefer `fs/promises`, native `fetch`, and modern Web APIs where available.
+- **Paths**: When filesystem paths are required, prefer `import.meta.url` with `fileURLToPath` over CommonJS globals.
+- **Tooling**: Assume `type: "module"` context. Ensure import paths resolve correctly in ESM; avoid conditional `require`.

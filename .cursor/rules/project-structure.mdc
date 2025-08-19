@@ -1,0 +1,29 @@
+---
+alwaysApply: true
+---
+# Mailing monorepo overview
+
+- **Packages**: `packages/cli`, `packages/core`, `packages/web`.
+- **Runtime/build**: Pure ESM across all packages; Node 18+ required; CLI builds with Vite; Web is Next.js 15–compatible.
+- **Key configs**:
+  - [package.json](mdc:package.json)
+  - [packages/cli/package.json](mdc:packages/cli/package.json)
+  - [packages/core/package.json](mdc:packages/core/package.json)
+  - [packages/web/package.json](mdc:packages/web/package.json)
+  - [packages/web/tsconfig.json](mdc:packages/web/tsconfig.json)
+
+## Code locations
+
+- **CLI UI**: `packages/cli/src/pages` (e.g., [packages/cli/src/pages/_app.tsx](mdc:packages/cli/src/pages/_app.tsx))
+- **Core lib**: `packages/core/src` (e.g., [packages/core/src/index.ts](mdc:packages/core/src/index.ts))
+- **Web (site/docs)**: `packages/web/pages` and `packages/web/components` (e.g., [packages/web/pages/_app.tsx](mdc:packages/web/pages/_app.tsx))
+
+## Tests and e2e
+
+- **Unit/Jest**: `packages/*/src/**/__test__/**` (e.g., [packages/core/src/__test__/index.test.tsx](mdc:packages/core/src/__test__/index.test.tsx))
+- **Cypress (CLI)**: `packages/cli/cypress` (e.g., [packages/cli/cypress/e2e/index.cy.js](mdc:packages/cli/cypress/e2e/index.cy.js))
+- **E2E harness**: `e2e/mailing_tests/cypress` (e.g., [e2e/mailing_tests/cypress/e2e/index.cy.js](mdc:e2e/mailing_tests/cypress/e2e/index.cy.js))
+
+## Helpful scripts
+
+- Release and tooling under `scripts/` (e.g., [scripts/release](mdc:scripts/release))

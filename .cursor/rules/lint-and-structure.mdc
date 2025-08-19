@@ -1,0 +1,9 @@
+---
+alwaysApply: true
+---
+# Linting, duplication, and file size
+
+- **Linting**: Treat all lints as errors. Do not disable or bypass rules; fix the root cause.
+- **Config changes**: If a lint rule appears misconfigured, propose changes explicitly and get confirmation before altering config.
+- **No duplication**: Extract reusable logic/types/components into shared modules instead of copying code.
+- **File size**: Keep files ≤ 500 lines; split into smaller modules when growth approaches this limit.

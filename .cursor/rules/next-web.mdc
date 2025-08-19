@@ -1,0 +1,10 @@
+---
+globs: packages/web/**
+---
+# Next.js (web package)
+
+- **Compatibility**: Next.js 15–compatible; keep modules ESM-only.
+- **Routing**: Site uses the `pages/` router ([packages/web/pages](mdc:packages/web/pages)); keep new pages and API routes consistent with this structure.
+- **MDX**: Docs/pages leverage MDX under `packages/web/pages/docs`.
+- **Server/Edge**: Do not rely on Node-only APIs in edge/runtime code paths; use `next/server` where appropriate.
+- **Imports**: Use absolute/relative imports supported by the project TS config ([packages/web/tsconfig.json](mdc:packages/web/tsconfig.json)).

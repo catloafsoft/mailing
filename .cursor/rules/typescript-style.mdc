@@ -1,0 +1,12 @@
+---
+globs: *.ts,*.tsx
+---
+# TypeScript style and structure
+
+- **Naming**: Use meaningful, descriptive identifiers; functions as verbs, variables as nouns; avoid abbreviations.
+- **Types**: Explicitly annotate exported/public APIs; avoid `any` and unsafe casts; prefer `unknown` + type guards where needed.
+- **Complex types**: Do not define complex types inline—extract and export from shared files for reuse.
+- **Control flow**: Prefer early returns; handle error/edge cases first; avoid deep nesting beyond 2–3 levels.
+- **Comments**: Keep minimal and purposeful; explain “why,” not “how.”
+- **Structure**: Keep files small (≤ 500 lines). Extract shared logic into common utilities/modules instead of duplicating code.
+- **ESM**: Use `import`/`export` consistently; do not use CommonJS syntax in TS.
