@@ -1,6 +1,6 @@
 {
   "name": "@catloafsoft/mailing",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "type": "module",
   "main": "./dist/mailing.js",
   "license": "MIT",
@@ -56,7 +56,9 @@
   "peerDependencies": {
     "next": "^14.2.29",
     "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "react-tiny-popover": "^8.1.6",
+    "@reecelucas/react-use-hotkeys": "^2.0.0"
   },
   "dependencies": {
     "@babel/parser": "^7.28.3",
