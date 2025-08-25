@@ -4,5 +4,5 @@ source 'https://rubygems.org'
 
 group :development, :test do
   gem 'pry', '0.15.2'
-  gem 'rubocop', '1.79.2'
+  gem 'rubocop', '1.80.0'
 end
