@@ -6,7 +6,7 @@ Run the development server:
 
 ```bash
 cd packages/web
-yarn dev
+pnpm dev
 ```
 
 ### DB
@@ -21,7 +21,7 @@ Then run migrate to create the DB and initialize the schema.
 
 ```bash
 cd packages/web
-npx prisma migrate dev
+pnpm exec prisma migrate dev
 ```
 
 In prod, we set MAILING_DATABASE_URL to a postgres db on neon.tech.

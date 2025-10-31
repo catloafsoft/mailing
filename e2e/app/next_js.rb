@@ -10,10 +10,10 @@ module App
 
     private
 
-    def yarn_create!
+    def pnpm_create!
       Dir.chdir(root_dir) do
         cmd = <<-STR.split("\n").map(&:strip).join(' ')
-          yarn create next-app .
+          pnpm create next-app .
           --javascript
           --no-eslint --no-src-dir --no-experimental-app --import-alias='@/*'
         STR

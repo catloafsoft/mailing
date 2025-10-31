@@ -44,15 +44,15 @@ module App
       ::FileUtils.mkdir_p(root_dir)
 
       use_cache do
-        yarn_create!
+        pnpm_create!
         verify_package_json_exists!
         verify_tsconfig_json_exists!
-        yarn_add_test_dependencies!
-        add_yarn_ci_scripts!
+        pnpm_add_test_dependencies!
+        add_pnpm_ci_scripts!
       end
 
       yalc_add_packages!
-      yarn!
+      pnpm_install!
       copy_ci_scripts!
       intialize_mailing!
       verify_typescript_mailing_config!
@@ -84,7 +84,7 @@ module App
 
     private
 
-    def yarn_create!
+    def pnpm_create!
       raise 'Subclasses must implement this method'
     end
 
@@ -124,27 +124,27 @@ module App
       end
     end
 
-    def yarn_add_test_dependencies!
-      puts "yarn add'ing dependencies required for tests"
+    def pnpm_add_test_dependencies!
+      puts "pnpm add'ing dependencies required for tests"
       Dir.chdir(install_dir) do
-        system_quiet('yarn add --dev @babel/preset-env jest cypress')
+        system_quiet('pnpm add --save-dev @babel/preset-env jest cypress')
       end
     end
 
-    def yarn!
-      puts 'Running yarn'
+    def pnpm_install!
+      puts 'Running pnpm install'
       Dir.chdir(root_dir) do
-        system_quiet('yarn')
+        system_quiet('pnpm install')
       end
 
       return if root_dir == install_dir
 
       Dir.chdir(install_dir) do
-        system_quiet('yarn')
+        system_quiet('pnpm install')
       end
     end
 
-    def add_yarn_ci_scripts!
+    def add_pnpm_ci_scripts!
       puts 'Adding CI scripts'
       Dir.chdir(install_dir) do
         package_json = JSON.parse(File.read('package.json'))

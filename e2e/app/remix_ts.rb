@@ -11,16 +11,16 @@ module App
 
     private
 
-    def yarn_create!
+    def pnpm_create!
       Dir.chdir(root_dir) do
         # install with the "remix" template
-        system_quiet('yarn create remix . --template=remix-run/remix/templates/remix --typescript --install')
+        system_quiet('pnpm create remix@latest . --template=remix-run/remix/templates/remix --typescript --install')
 
         ## variation: indie-stack is a different remix template that people use
-        # system_quiet("yarn create remix . --template=remix-run/indie-stack --typescript --install")
+        # system_quiet("pnpm create remix@latest . --template=remix-run/indie-stack --typescript --install")
 
-        # yarn add peer dependencies
-        system_quiet('yarn add next react react-dom')
+        # pnpm add peer dependencies
+        system_quiet('pnpm add next react react-dom')
       end
     end
   end

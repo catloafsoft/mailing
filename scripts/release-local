@@ -25,12 +25,14 @@ fi
 # Search and replace in src directories
 
 ## build packages only, without publishing
-yarn build
+pnpm run build
 
 ## create a local tarball of each package
 mkdir -p dist
-yarn workspace @catloafsoft/mailing pack --out ../../dist/catloafsoft-mailing-v$MAILING_VERSION.tgz
-yarn workspace @catloafsoft/mailing-core pack --out ../../dist/catloafsoft-mailing-core-v$MAILING_CORE_VERSION.tgz
+pnpm --filter @catloafsoft/mailing exec npm pack --pack-destination ../../dist --silent
+mv dist/catloafsoft-mailing-$MAILING_VERSION.tgz dist/catloafsoft-mailing-v$MAILING_VERSION.tgz
+pnpm --filter @catloafsoft/mailing-core exec npm pack --pack-destination ../../dist --silent
+mv dist/catloafsoft-mailing-core-$MAILING_CORE_VERSION.tgz dist/catloafsoft-mailing-core-v$MAILING_CORE_VERSION.tgz
 
 echo "Created packages in dist/ directory:"
 ls -la dist/

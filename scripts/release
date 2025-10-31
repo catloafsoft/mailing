@@ -33,7 +33,7 @@ echo "Publishing to @catloafsoft scope - make sure you have access rights"
 echo "If you haven't created this scope yet, you'll be prompted during publishing"
 
 # Build packages
-yarn build
+pnpm run build
 
 # Publish with public access since scoped packages are private by default
-yarn changeset publish --access public
+pnpm exec changeset publish --access public

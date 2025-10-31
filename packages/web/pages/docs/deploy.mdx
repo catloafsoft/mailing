@@ -29,7 +29,7 @@ Here’s a working Vercel configuration:
 
 ### Netlify
 
-1. Install the Netlify NextJS plugin: `yarn add @netlify/plugin-nextjs`
+1. Install the Netlify NextJS plugin: `pnpm add @netlify/plugin-nextjs`
 2. Create a `netlify.toml` in your project root with the plugin enabled:
 
 ```bash netlify.toml
@@ -37,7 +37,7 @@ Here’s a working Vercel configuration:
 package = "@netlify/plugin-nextjs"
 ```
 
-3. In the Netlify deploy settings, set the "build command" to `yarn install && yarn mailing server build` and set "publish directory" to `.mailing/.next`
+3. In the Netlify deploy settings, set the "build command" to `pnpm install && pnpm exec mailing server build` and set "publish directory" to `.mailing/.next`
 
 ### Other hosts
 

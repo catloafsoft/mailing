@@ -20,7 +20,12 @@ module Commands
       # Run Jest Tests
       Dir.chdir(app.install_dir) do
         announce! "Running jest tests with --updateSnapshot for #{app_name}", '🃏'
-        system('yarn jest --rootDir=mailing_tests/jest --config mailing_tests/jest/jest.config.json --updateSnapshot')
+        system(
+          'pnpm', 'exec', 'jest',
+          '--rootDir=mailing_tests/jest',
+          '--config', 'mailing_tests/jest/jest.config.json',
+          '--updateSnapshot'
+        )
 
         # copy snapshots back to mailing
         announce! 'Copying updated snapshots to the mailing project', '🥋'

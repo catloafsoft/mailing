@@ -10,7 +10,7 @@ IN="packages/cli/src/$1"
 OUT="packages/cli/src/$1-js"
 
 # Generate JS templates from TS Templates
-npx tsc \
+pnpm exec tsc \
 --allowSyntheticDefaultImports true \
 --moduleResolution node \
 --jsx preserve \
@@ -20,8 +20,8 @@ npx tsc \
 $IN/**/*.tsx $IN/*.tsx $IN/*.ts
 
 # Format the generated JS templates
-npx prettier --write $OUT/*
-yarn eslint --fix --ext .jsx,.js $OUT/*
+pnpm exec prettier --write $OUT/*
+pnpm exec eslint --fix --ext .jsx,.js $OUT/*
 
 # Add the generated JS templates to git
 git add $OUT/*

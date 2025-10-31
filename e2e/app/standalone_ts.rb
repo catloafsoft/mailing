@@ -11,13 +11,13 @@ module App
 
     private
 
-    def yarn_create!
+    def pnpm_create!
       Dir.chdir(root_dir) do
-        system_quiet('yarn init --yes')
-        system_quiet('yarn add typescript && yarn tsc --init')
+        system_quiet('pnpm init --yes')
+        system_quiet('pnpm add typescript && pnpm exec tsc --init')
 
-        # yarn add peer dependencies
-        system_quiet('yarn add next react react-dom')
+        # pnpm add peer dependencies
+        system_quiet('pnpm add next react react-dom')
       end
     end
   end

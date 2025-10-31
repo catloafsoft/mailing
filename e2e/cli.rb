@@ -42,7 +42,7 @@ class Cli
       puts '  Flags:'
       puts '    --app [app_name] - name of app to run tests for'
       puts '    --save-cache - save each framework install (before mailing is added) to the `cache` directory.
-      Subsequent test runs will start with a copy of the cache instead of running `yarn create` and `yarn install`'
+      Subsequent test runs will start with a copy of the cache instead of running `pnpm create` and `pnpm install`'
       puts '    --help - show this help message'
       puts "\n"
     end

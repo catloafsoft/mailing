@@ -2,8 +2,5 @@
 package = "@netlify/plugin-nextjs"
 
 [build]
-command = "yarn build"
+command = "pnpm --filter web build"
 publish = ".next"
-
-[build.environment]
-  NETLIFY_USE_YARN = "true"

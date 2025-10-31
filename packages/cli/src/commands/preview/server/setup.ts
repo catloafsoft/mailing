@@ -55,7 +55,7 @@ async function appendFile(filename: string, data: string) {
 
 export const COMPONENT_FILE_REGEXP = /^[^\s]+\.[tj]sx$/; // no spaces, .jsx or .tsx
 export const DOT_MAILING_IGNORE_REGEXP =
-  /__test__|__integration__|generator_templates|yarn-error.log|src\/index\.ts$|src\/dev\.js$|\.mailing$|\.next|node_modules$|^cypress/;
+  /__test__|__integration__|generator_templates|yarn-error.log|pnpm-debug.log|src\/index\.ts$|src\/dev\.js$|\.mailing$|\.next|node_modules$|^cypress/;
 
 export type PreviewServerOptions = {
   emailsDir: string;

@@ -10,12 +10,12 @@ module App
 
     private
 
-    def yarn_create!
+    def pnpm_create!
       Dir.chdir(root_dir) do
-        system_quiet('yarn create remix . --template=remix --no-typescript --install')
+        system_quiet('pnpm create remix@latest . --template=remix --no-typescript --install')
 
-        # yarn add peer dependencies
-        system_quiet('yarn add next react react-dom')
+        # pnpm add peer dependencies
+        system_quiet('pnpm add next react react-dom')
       end
     end
   end

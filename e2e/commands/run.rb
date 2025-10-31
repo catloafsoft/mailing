@@ -21,13 +21,13 @@ module Commands
       # Run Jest Tests
       Dir.chdir(app.install_dir) do
         announce! "Running jest tests for #{app_name}", '🃏'
-        system('yarn jest --rootDir=mailing_tests/jest --config mailing_tests/jest/jest.config.json')
+        system('pnpm exec jest --rootDir=mailing_tests/jest --config mailing_tests/jest/jest.config.json')
       end
 
       app.run_mailing do
         # Run Cypress Tests
         announce! "Running cypress tests for #{app_name}", '🏃'
-        system('yarn cypress run --project mailing_tests')
+        system('pnpm exec cypress run --project mailing_tests')
       end
     end
   end

@@ -27,7 +27,7 @@ export async function generateEmailsDirectory({
   await copy(resolve(srcDir, srcEmails), emailsDir, { overwrite: false });
 
   const fileTree = tree(emailsDir, {
-    exclude: [/node_modules|\.mailing|yarn\.lock|yalc\.lock/],
+    exclude: [/node_modules|\.mailing|yarn\.lock|pnpm-lock\.yaml|yalc\.lock/],
   });
   log(`generated your emails dir at ${emailsDir}:\n${fileTree}`);
 }

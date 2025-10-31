@@ -10,16 +10,16 @@ module App
 
     private
 
-    def yarn_create!
+    def pnpm_create!
       Dir.chdir(root_dir) do
-        system_quiet('yarn create redwood-app . --ts=false --no-git')
+        system_quiet('pnpm create redwood-app . --ts=false --no-git')
 
-        # yarn add peer dependencies
-        system_quiet('yarn add next react react-dom')
+        # pnpm add peer dependencies
+        system_quiet('pnpm add next react react-dom')
       end
     end
 
-    def add_yarn_ci_scripts!
+    def add_pnpm_ci_scripts!
       super
 
       Dir.chdir(root_dir) do
@@ -27,6 +27,10 @@ module App
         package_json['resolutions'] ||= {}
         package_json['resolutions']['@types/react'] = '^17'
         package_json['resolutions']['@types/react-dom'] = '^17'
+        package_json['pnpm'] ||= {}
+        package_json['pnpm']['overrides'] ||= {}
+        package_json['pnpm']['overrides']['@types/react'] = '^17'
+        package_json['pnpm']['overrides']['@types/react-dom'] = '^17'
         File.write('package.json', JSON.pretty_generate(package_json))
       end
     end

@@ -1,5 +1,5 @@
 {
-  "*.{js,jsx,ts,tsx}": "eslint --fix",
+  "*.{js,jsx,ts,tsx}": "pnpm exec eslint --fix",
   "*.rb": "rubocop --autocorrect",
   "packages/cli/src/__mocks__/emails/**/*.{ts,tsx}": "scripts/generate-emails __mocks__/emails",
   "packages/cli/src/emails/**/*.{ts,tsx}": "scripts/generate-emails emails"

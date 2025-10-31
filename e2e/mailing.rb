@@ -7,7 +7,7 @@ class Mailing
   extend SystemUtils
 
   def self.build(skip: false)
-    # Install yarn dependencies and publish Cli and Core to yalc
+    # Install pnpm dependencies and publish Cli and Core to yalc
     if skip
       puts 'Skipping build because skip-build flag is set'
       return
@@ -16,8 +16,8 @@ class Mailing
     announce! 'Building mailing...', '🔨'
 
     Dir.chdir(Config::PROJECT_ROOT) do
-      res = system_quiet('yarn build')
-      raise 'yarn build failed' unless res
+      res = system_quiet('pnpm run build')
+      raise 'pnpm run build failed' unless res
     end
 
     Dir.chdir(Config::CLI_ROOT) do

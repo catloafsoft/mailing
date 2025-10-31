@@ -4,15 +4,15 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "yarn prisma migrate dev && next dev",
-    "ci:server": "yarn prisma generate && yarn prisma migrate deploy && next dev",
-    "build": "yarn prisma generate && yarn prisma migrate deploy && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc",
-    "build-emails": "cp -r ./emails/assets public && yarn mailing server build",
-    "dev-emails": "yarn mailing",
-    "dev-emails:local-assets": "npx mailing server scaffold && ln -sf ../../emails/assets ./.mailing/public && LOCAL_ASSETS=true yarn mailing preview"
+    "dev": "pnpm exec prisma migrate dev && pnpm exec next dev",
+    "ci:server": "pnpm exec prisma generate && pnpm exec prisma migrate deploy && pnpm exec next dev",
+    "build": "pnpm exec prisma generate && pnpm exec prisma migrate deploy && pnpm exec next build",
+    "start": "pnpm exec next start",
+    "lint": "pnpm exec next lint",
+    "type-check": "pnpm exec tsc",
+    "build-emails": "cp -r ./emails/assets public && pnpm exec mailing server build",
+    "dev-emails": "pnpm exec mailing",
+    "dev-emails:local-assets": "pnpm exec mailing server scaffold && ln -sf ../../emails/assets ./.mailing/public && LOCAL_ASSETS=true pnpm exec mailing preview"
   },
   "dependencies": {
     "@catloafsoft/mailing-core": "^2.0.2",
