@@ -1,8 +1,12 @@
 {
   "name": "web",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "type": "module",
   "private": true,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "pnpm exec prisma migrate dev && pnpm exec next dev",
     "ci:server": "pnpm exec prisma generate && pnpm exec prisma migrate deploy && pnpm exec next dev",
