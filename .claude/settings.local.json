@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(npm view:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm add:*)",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
