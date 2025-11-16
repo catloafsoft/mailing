@@ -36,4 +36,4 @@ echo "If you haven't created this scope yet, you'll be prompted during publishin
 pnpm run build
 
 # Publish with public access since scoped packages are private by default
-pnpm exec changeset publish --access public
+pnpm -r publish --access public
