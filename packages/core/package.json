@@ -40,7 +40,7 @@
     "@faire/mjml-react": "^3.5.3",
     "chalk": "^5.6.2",
     "fs-extra": "^11.3.2",
-    "mjml": "^4.17.0",
+    "mjml": "^4.17.1",
     "node-fetch": "^3.3.2",
     "node-html-parser": "^7.0.1",
     "open": "^10.2.0",
